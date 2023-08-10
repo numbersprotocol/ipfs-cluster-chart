@@ -41,6 +41,11 @@ spec:
         - name: ipfs
           image: {{ .Values.ipfsImage.repo }}:{{ .Values.ipfsImage.tag }}
           imagePullPolicy: IfNotPresent
+          args:
+            - daemon
+            - --migrate=true
+            - --agent-version-suffix=docker
+            - --enable-gc
           env:
             - name: IPFS_FD_MAX
               value: "4096"
